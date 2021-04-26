@@ -27,5 +27,6 @@ namespace OneToOne
     
         public virtual DbSet<TblGuardian> TblGuardians { get; set; }
         public virtual DbSet<TblStudent> TblStudents { get; set; }
+        public virtual DbSet<TblDepartment> TblDepartments { get; set; }
     }
 }

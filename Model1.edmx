@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="OnetoOneDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TblDepartment">
+          <Key>
+            <PropertyRef Name="Dept_no" />
+          </Key>
+          <Property Name="Dept_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="TblGuardian">
           <Key>
             <PropertyRef Name="R_no" />
@@ -37,6 +44,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="OnetoOneDBModelStoreContainer">
+          <EntitySet Name="TblDepartment" EntityType="Self.TblDepartment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblGuardian" EntityType="Self.TblGuardian" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblStudent" EntityType="Self.TblStudent" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_TblGuardian_TblStudent" Association="Self.FK_TblGuardian_TblStudent">
@@ -88,7 +96,15 @@
             <End Role="TblStudent" EntitySet="TblStudents" />
             <End Role="TblGuardian" EntitySet="TblGuardians" />
           </AssociationSet>
+          <EntitySet Name="TblDepartments" EntityType="OnetoOneDBModel.TblDepartment" />
         </EntityContainer>
+        <EntityType Name="TblDepartment">
+          <Key>
+            <PropertyRef Name="Dept_no" />
+          </Key>
+          <Property Name="Dept_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -113,6 +129,14 @@
                 <ScalarProperty Name="Std_Phn" ColumnName="Std_Phn" />
                 <ScalarProperty Name="Std_Email" ColumnName="Std_Email" />
                 <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDepartments">
+            <EntityTypeMapping TypeName="OnetoOneDBModel.TblDepartment">
+              <MappingFragment StoreEntitySet="TblDepartment">
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="Dept_no" ColumnName="Dept_no" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
