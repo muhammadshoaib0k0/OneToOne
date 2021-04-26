@@ -1,0 +1,42 @@
+﻿@model OneToOne.TblGuardian
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TblGuardian</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.G_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.G_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblStudent.Std_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblStudent.Std_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.R_no }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
