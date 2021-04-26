@@ -48,7 +48,7 @@ namespace OneToOne.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "R_no,Std_Name,Std_Phn,Std_Email,CNIC")] TblStudent tblStudent)
+        public ActionResult Create([Bind(Include = "R_no,Std_Name,Std_Phn,Std_Email,CNIC,SUBJECT")] TblStudent tblStudent)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace OneToOne.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "R_no,Std_Name,Std_Phn,Std_Email,CNIC")] TblStudent tblStudent)
+        public ActionResult Edit([Bind(Include = "R_no,Std_Name,Std_Phn,Std_Email,CNIC,SUBJECT")] TblStudent tblStudent)
         {
             if (ModelState.IsValid)
             {

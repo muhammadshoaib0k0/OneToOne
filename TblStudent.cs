@@ -19,6 +19,7 @@ namespace OneToOne
         public string Std_Phn { get; set; }
         public string Std_Email { get; set; }
         public string CNIC { get; set; }
+        public string SUBJECT { get; set; }
     
         public virtual TblGuardian TblGuardian { get; set; }
     }

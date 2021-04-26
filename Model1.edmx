@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OnetoOneDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OnetoOneDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TblGuardian">
           <Key>
             <PropertyRef Name="R_no" />
@@ -22,6 +22,7 @@
           <Property Name="Std_Phn" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Std_Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="CNIC" Type="nvarchar" MaxLength="40" />
+          <Property Name="SUBJECT" Type="nvarchar" MaxLength="56" />
         </EntityType>
         <Association Name="FK_TblGuardian_TblStudent">
           <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
@@ -43,8 +44,7 @@
             <End Role="TblGuardian" EntitySet="TblGuardian" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OnetoOneDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -67,6 +67,7 @@
           <Property Name="Std_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CNIC" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblGuardian" Relationship="Self.FK_TblGuardian_TblStudent" FromRole="TblStudent" ToRole="TblGuardian" />
+          <Property Name="SUBJECT" Type="String" MaxLength="56" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_TblGuardian_TblStudent">
           <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
@@ -106,6 +107,7 @@
           <EntitySetMapping Name="TblStudents">
             <EntityTypeMapping TypeName="OnetoOneDBModel.TblStudent">
               <MappingFragment StoreEntitySet="TblStudent">
+                <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
                 <ScalarProperty Name="R_no" ColumnName="R_no" />
                 <ScalarProperty Name="Std_Name" ColumnName="Std_Name" />
                 <ScalarProperty Name="Std_Phn" ColumnName="Std_Phn" />
